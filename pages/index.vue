@@ -1,15 +1,8 @@
 <template>
-  <div>
-    
-  </div>
+	<NavBar />
+	<CarHero />
 </template>
 
-<script lang="ts" setup>
+<script setup></script>
 
-</script>
-
-
-
-<style>
-
-</style>
+<style></style>
