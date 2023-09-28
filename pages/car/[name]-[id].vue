@@ -19,3 +19,12 @@
 		</div>
 	</div>
 </template>
+<script setup>
+import toTitleCase from '../../../utils/titleCase.js';
+
+const route = useRoute();
+
+useHead({
+	title: `${toTitleCase(route.params.name) + '-' + route.params.id} `,
+});
+</script>

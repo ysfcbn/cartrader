@@ -1,7 +1,7 @@
 <template>
 	<!-- CAR CARD -->
 	<div
-		class="shadow border min-w-full overflow-hidden mb-5 cursor-pointer h-[200px] shrink-0"
+		class="shadow border min-w-[32rem] overflow-hidden mb-5 cursor-pointer h-[200px]"
 	>
 		<div class="flex h-full">
 			<img
@@ -9,8 +9,8 @@
 				alt=""
 				class="w-[300px] h-full"
 			/>
-			<div class="p-4 flex flex-col">
-				<div class="shrink-0">
+			<div class="p-4 flex flex-col min-w-[5rem]">
+				<div class="">
 					<h1 class="text-2xl text-blue-700">Volvo XC40</h1>
 					<p class="text-gray-700">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
