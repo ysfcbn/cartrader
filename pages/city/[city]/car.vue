@@ -1,22 +1,38 @@
 <template>
 	<div>
-		<NavBar />
 		<div class="text-red-500">{{ make }}</div>
-		<div
-			class="mx-auto mt-4 max-w-7xl space-y-4 px-4 xs:px-8 sm:px-10 lg:px-16 pb-16 w-3/5"
-		>
-			<div class="mt-32 flex">
+
+		<div class="mt-32 flex">
+			<NuxtErrorBoundary>
 				<CarSideBar />
 				<NuxtPage />
-			</div>
+				<template #error="{ error }">
+					<div class="text-center mx-auto flex flex-col">
+						<h1 class="text-3xl text-red-500 mb-4">
+							Sorry, something went wrong
+						</h1>
+						<code>{{ error }}</code>
+						<button
+							@click="error.value = null"
+							class="text-white bg-blue-400 px-10 py-3 rounded-full mt-4"
+						>
+							Go back
+						</button>
+					</div></template
+				>
+			</NuxtErrorBoundary>
 		</div>
 	</div>
 </template>
 
 <script setup>
+definePageMeta({
+	layout: 'custom',
+});
+
+const { toTitleCase } = useUtilities();
 const { make } = useRoute().params;
 const route = useRoute();
-import toTitleCase from '../../../utils/titleCase.js';
 
 const carName = computed(() =>
 	route.params.make ? toTitleCase(route.params.make) : 'Cars'

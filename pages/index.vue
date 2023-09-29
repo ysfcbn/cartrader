@@ -1,5 +1,4 @@
 <template>
-	<NavBar />
 	<CarHero />
 </template>
 

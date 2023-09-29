@@ -1,6 +1,6 @@
 <template>
 	<div class="flex min-w-[20rem]">
-		<CarCard />
+		<CarCards />
 	</div>
 </template>
 

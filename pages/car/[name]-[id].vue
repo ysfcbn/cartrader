@@ -1,28 +1,33 @@
 <template>
 	<div>
-		<NavBar />
-		<div
-			class="mx-auto mt-4 max-w-7xl space-y-4 px-4 xs:px-8 sm:px-10 lg:px-16 pb-16 w-3/5"
-		>
-			<!-- CAR HERO -->
-			<CarDetail />
-			<!-- CAR HERO -->
-			<!-- CAR ATTRIBUTES -->
-			<CarAttributes />
-			<!-- CAR ATTRIBUTES -->
-			<!-- CAR DESCRISPTION -->
-			<CarDescription />
-			<!-- CAR DESCRISPTION -->
-			<!-- CAR CONTACT -->
-			<CarContact />
-			<!-- CAR CONTACT -->
-		</div>
+		<CarDetail :car="car" />
+		<CarAttributes :features="car.features" />
+		<CarDescription :description="car.description" />
+		<CarContact />
 	</div>
 </template>
-<script setup>
-import toTitleCase from '../../../utils/titleCase.js';
 
+<script setup>
+definePageMeta({
+	layout: 'custom',
+});
+
+const { toTitleCase } = useUtilities();
 const route = useRoute();
+const { cars } = useCars();
+
+const car = computed(() => {
+	return cars.find(c => {
+		return c.id === parseInt(route.params.id);
+	});
+});
+
+if (!car.value) {
+	throw createError({
+		statusCode: 404,
+		message: `Car with ID:${route.params.id} does not exist`,
+	});
+}
 
 useHead({
 	title: `${toTitleCase(route.params.name) + '-' + route.params.id} `,
