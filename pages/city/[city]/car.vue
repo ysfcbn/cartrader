@@ -1,7 +1,5 @@
 <template>
 	<div>
-		<div class="text-red-500">{{ make }}</div>
-
 		<div class="mt-32 flex">
 			<NuxtErrorBoundary>
 				<CarSideBar />
