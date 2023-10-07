@@ -14,13 +14,8 @@ definePageMeta({
 
 const { toTitleCase } = useUtilities();
 const route = useRoute();
-const { cars } = useCars();
 
-const car = computed(() => {
-	return cars.find(c => {
-		return c.id === parseInt(route.params.id);
-	});
-});
+const { data: car } = await useFetchCar(route.params.id);
 
 if (!car.value) {
 	throw createError({
